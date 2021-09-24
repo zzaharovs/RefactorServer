@@ -13,13 +13,11 @@ import java.util.List;
 public class Connection implements Runnable {
 
     private final List<String> validPaths;
-    private final Socket socket;
     private final BufferedReader in;
     private final BufferedOutputStream out;
 
     public Connection(List <String> validPaths, Socket socket) throws IOException {
         this.validPaths = validPaths;
-        this.socket = socket;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.out = new BufferedOutputStream(socket.getOutputStream());
     }

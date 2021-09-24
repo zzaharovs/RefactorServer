@@ -11,17 +11,18 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class Main {
 
     public static final int NUMBER_THREADS = 64;
+    public static final int PORT = 9999;
+
 
     public static void main(String[] args) throws IOException {
 
         final var validPaths = List.of("/index.html",
                 "/spring.svg", "/spring.png", "/resources.html", "/styles.css", "/app.js",
                 "/links.html", "/forms.html", "/classic.html", "/events.html", "/events.js");
-        final int port = 9999;
 
-        ExecutorService threadPool = Executors.newFixedThreadPool(64);
+        ExecutorService threadPool = Executors.newFixedThreadPool(NUMBER_THREADS);
 
-        Server server = new Server(validPaths, port, threadPool);
+        Server server = new Server(validPaths, PORT, threadPool);
         server.start();
 
 
